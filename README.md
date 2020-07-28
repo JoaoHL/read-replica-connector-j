@@ -28,7 +28,7 @@ To run on command line `mvn spring-boot:run`
 
 Install docker-compose on your machine https://docs.docker.com/compose/install/. Then copy [src/main/resources/application-compose.properties.sample](src/main/resources/application-compose.properties.sample) to [src/main/resources/application.properties](src/main/resources/application.properties), command: `cp src/main/resources/application-compose.properties.sample src/main/resources/application.properties`.
 
-Conecting to mysql via terminal `docker-compose exec  [main|replica] mysql`.
+Then start the serever with `docker-compose up -d`. And to run  `mvn spring-boot:run` 
 
 Initializing the databases:
 ```bash
@@ -38,5 +38,4 @@ docker-compose exec  -T  replica sh -c 'exec mysql demo'  < src/main/resources/m
 docker-compose exec  -T  replica sh -c 'exec mysql demo'  < src/main/resources/migrations/addUsersToReplica.sql
 ```
 
-
-Then start the serever with `docker-compose up -d`. And to run  `mvn spring-boot:run` 
+Conecting to mysql via terminal `docker-compose exec  [main|replica] mysql`.
