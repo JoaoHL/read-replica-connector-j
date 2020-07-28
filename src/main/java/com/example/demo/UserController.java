@@ -25,9 +25,16 @@ public class UserController {
         return ResponseEntity.ok(user.get());
     }
 
-    //@Transactional(readOnly = true)
     @GetMapping("/findByName/{name}")
-    public  ResponseEntity findByName(@PathVariable String name) {
+    public ResponseEntity findByName(@PathVariable String name) {
+        User user = userRepository.findByName(name);
+        if (user == null) return  ResponseEntity.notFound().build();
+        return ResponseEntity.ok(user);
+    }
+
+    @Transactional(readOnly = true)
+    @GetMapping("/readonly/findByName/{name}")
+    public ResponseEntity transactionalFindByName(@PathVariable String name) {
         User user = userRepository.findByName(name);
         if (user == null) return  ResponseEntity.notFound().build();
         return ResponseEntity.ok(user);
