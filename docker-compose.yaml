@@ -1,14 +1,21 @@
 version: "3"
 services:
-    principal:
+    main:
         ports: 
             - 3307:3306
         image: mysql:latest
         environment:
+            MYSQL_DATABASE: "demo"
             MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        volumes: 
+            - ./main-data:/var/lib/mysql
+
     replica:
         ports: 
             - 3308:3306
         image: mysql:latest
         environment:
+            MYSQL_DATABASE: "demo"
             MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        volumes: 
+            - ./replica-data:/var/lib/mysql
