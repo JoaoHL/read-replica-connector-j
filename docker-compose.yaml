@@ -1,0 +1,14 @@
+version: "3"
+services:
+    principal:
+        ports: 
+            - 3307:3306
+        image: mysql:latest
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    replica:
+        ports: 
+            - 3308:3306
+        image: mysql:latest
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
